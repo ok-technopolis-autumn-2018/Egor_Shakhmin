@@ -41,6 +41,11 @@
           transition: color 0.4s;
           }
 
+          .todos-list_item.__completed  .todos-list_item_view_text {
+            color: #d9d9d9;
+            text-decoration: line-through;
+            }
+
     .todos-list_item_view_remove {
       float: right;
       margin-left: 16px;
