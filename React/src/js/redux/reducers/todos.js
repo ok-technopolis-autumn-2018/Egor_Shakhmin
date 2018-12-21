@@ -3,7 +3,7 @@ import { todoConstants } from '../constants';
 
 import { filters } from '~/js/constants';
 
-const todos = JSON.parse(localStorage.getItem('todos'));
+const todos = JSON.parse(localStorage.getItem('todosReact'));
 
 const initialState = todos 
   ? 
