@@ -8,7 +8,7 @@ export default class TodosListModel extends Dispatcher {
 
     this.getList = () => {
       const todos = JSON.parse(localStorage.getItem(name));
-      return todos.list;
+      return todos === null ? [] : todos.todosList;
     }
 
     this.getNewId = () => {
@@ -16,18 +16,18 @@ export default class TodosListModel extends Dispatcher {
       const id = todos.currentId;
       const newTodos = {
         currentId: id + 1,
-        list: todos.list,
+        todosList: todos.todosList,
       }
       localStorage.setItem(name, JSON.stringify(newTodos));
 
       return id;
     }
 
-    this.setList = (list) => {
+    this.setList = (todosList) => {
       const todos = JSON.parse(localStorage.getItem(name));
       const newTodos = {
         currentId: todos.currentId,
-        list,
+        todosList,
       }
       localStorage.setItem(name, JSON.stringify(newTodos));
     }
@@ -39,7 +39,7 @@ export default class TodosListModel extends Dispatcher {
     if (this.getList().length === 0) {
       const data = {
         currentId: 0,
-        list: [],
+        todosList: [],
       }
       this.setNewData(data);
     }
@@ -75,7 +75,7 @@ export default class TodosListModel extends Dispatcher {
     todos = todos.filter(todo => todo.id !== removedTodo.id );
 
     if (todos.length === 0) {
-      this.setNewData({currentId: 0, list: []})
+      this.setNewData({currentId: 0, todosList: []})
     } else {
       this.setList(todos);
     }
@@ -99,7 +99,7 @@ export default class TodosListModel extends Dispatcher {
     todos = todos.filter(todo => !todo.isReady);
 
     if (todos.length === 0) {
-      this.setNewData({currentId: 0, list: []})
+      this.setNewData({currentId: 0, todosList: []})
     } else {
       this.setList(todos);
     }

@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "react",
+    "env",
+    "stage-1"
+  ],
+  "plugins": [
+    "jsx-control-statements",
+    "transform-object-rest-spread",
+    "react-hot-loader/babel",
+    "transform-class-properties"
+  ]
+}
